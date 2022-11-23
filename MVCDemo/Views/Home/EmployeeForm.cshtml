@@ -1,0 +1,50 @@
+﻿@model MVCDemo.Models.Employee
+@{
+    ViewBag.Title = "EmployeeForm";
+}
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+<h2>EmployeeForm</h2>
+
+@*<form method="post" action="DisplayEmployee">
+    <input type="text" name="EmpId" value="@Model.EmpId"/>
+    <input type="submit"/>
+</form>*@
+
+@using (Html.BeginForm("DisplayEmployee","Home",FormMethod.Post))
+ {
+    <div class="text-danger">
+        @Html.ValidationSummary()
+    </div>
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.EmpId)</th>
+            <td>
+                @Html.TextBoxFor(m => m.EmpId)
+                <span class="text-danger"> @Html.ValidationMessageFor(m => m.EmpId,"*") </span>
+            </td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.EmpName)</th>
+            <td>
+                @Html.TextBoxFor(m => m.EmpName)
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.EmpName,"*") </span>
+</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Salary)</th>
+            <td>
+                @Html.TextBoxFor(m => m.Salary)
+            </td>
+        </tr>
+        <tr>
+            <td col-span="2"><input type="submit" class="btn btn-primary"/></td>
+        </tr>
+    </table>
+    <br>
+ }

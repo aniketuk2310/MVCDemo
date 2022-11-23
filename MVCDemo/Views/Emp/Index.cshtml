@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MVCDemo.Models.EMP>
+@using MVCDemo.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("Create","Create")
+<table class="table table-striped">
+    <tr>
+        <th>EmpNo</th>
+        <th>EmpName</th>
+        <th>Sal</th>
+        <th>DeptNo</th>
+        <th>CRUD</th>
+    </tr>
+    @foreach (EMP item in Model)
+    {
+        <tr>
+            <td>@item.EMPNO</td>
+            <td>@item.ENAME</td>
+            <td>@item.SAL</td>
+            <td>@item.DEPTNO</td>
+            <td>
+                @*@Html.ActionLink("text","action","id")*@
+                @Html.ActionLink("Details", "Details", new {id=item.EMPNO}) |
+                @Html.ActionLink("Edit", "Edit", new {id=item.EMPNO}) |
+                @Html.ActionLink("Delete", "Delete", new {id=item.EMPNO}) |
+            </td>
+        </tr>
+    }
+</table>
